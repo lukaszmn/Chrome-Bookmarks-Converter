@@ -4,12 +4,16 @@ function ready() {
 
         const text = editor.value;
 
+        const read = id => document.getElementById(id).value
+            .replace('\\t', '\t')
+            .replace('\\n', '\n');
+
         const config = {
-            indent: document.getElementById('indent').value.replace('\\t', '\t'),
+            indent: read('indent'),
             indentAfterHeader: document.getElementById('indentAfterHeader').checked,
-            formatHeader: document.getElementById('formatHeader').value,
-            formatUrl: document.getElementById('formatUrl').value,
-            formatFolder: document.getElementById('formatFolder').value
+            formatHeader: read('formatHeader'),
+            formatUrl: read('formatUrl'),
+            formatFolder: read('formatFolder')
         };
 
         const converted = convert(text, config);
