@@ -1,66 +1,66 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
 }
 
 main {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 section {
-    padding: 10px;
+	padding: 10px;
 }
 
 header {
-    padding: 10px 10px 0 10px;
-    display: flex;
+	padding: 10px 10px 0 10px;
+	display: flex;
 }
 
 header > section {
-    flex: 1;
+	flex: 1;
 }
 
 h1 {
-    margin: 0;
-    text-align: center;
+	margin: 0;
+	text-align: center;
 }
 
 code {
-    color: cornflowerblue;
+	color: cornflowerblue;
 }
 
 label,
 .desc {
-    font-size: 90%;
+	font-size: 90%;
 }
 
 label {
-    width: 105px;
-    display: inline-block;
+	width: 105px;
+	display: inline-block;
 }
 
 section#options p {
-    margin: 7px 0;
+	margin: 7px 0;
 }
 
 section#field {
-    padding-top: 0;
-    flex: 1 0 auto;
-    display: flex;
-    flex-direction: column;
+	padding-top: 0;
+	flex: 1 0 auto;
+	display: flex;
+	flex-direction: column;
 }
 
 #convertText {
-    flex: 1 0 auto;
+	flex: 1 0 auto;
 }
 
 button {
-    background: cadetblue;
-    align-self: center;
-    padding: 5px 20px;
-    margin: 10px;
+	background: cadetblue;
+	align-self: center;
+	padding: 5px 20px;
+	margin: 10px;
 }
