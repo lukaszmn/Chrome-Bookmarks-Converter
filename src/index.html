@@ -16,16 +16,11 @@
 				<p>This tool allows converting Chrome's bookmarks JSON file to a more readable and usable format, e.g. for synchronization, comparison, finding duplicates, etc.</p>
 				<p><u>Usage:</u> paste the contents of <code>c:\Users\&lt;name&gt;\AppData\Local\Google\Chrome\User Data\Default\Bookmarks</code> file to the field below and click <b>Convert</b>.</p>
 			</section>
-			
+
 			<section id="options">
 				<p>
 					<label>Indent:</label>
 					<input id="indent" value="	" size="8" />
-				</p>
-				<p>
-					<label>Indent:</label>
-					<input id="indentAfterHeader" type="checkbox" />
-					<span class="desc">Indent after the header.</span>
 				</p>
 				<p>
 					<label>Header format:</label>
@@ -33,9 +28,19 @@
 					<span class="desc">You can use <code>ID</code> and <code>NAME</code>.</span>
 				</p>
 				<p>
+					<label>Indent:</label>
+					<input id="indentAfterHeader" type="checkbox" />
+					<span class="desc">Indent after the header.</span>
+				</p>
+				<p>
 					<label>Folder format:</label>
 					<input id="formatFolder" value="* PATH:" size="30" />
 					<span class="desc">You can use <code>NAME</code> and <code>PATH</code>.</span>
+				</p>
+				<p>
+					<label>Flat & sorted:</label>
+					<input id="flatAndSorted" type="checkbox" />
+					<span class="desc">Print only links, sorted alphabeticaly.</span>
 				</p>
 				<p>
 					<label>Link format:</label>

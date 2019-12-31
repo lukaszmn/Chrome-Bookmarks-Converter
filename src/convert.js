@@ -20,6 +20,7 @@ function processAll() {
 	const config = {
 		indent: read('indent'),
 		indentAfterHeader: document.getElementById('indentAfterHeader').checked,
+		flatAndSorted: document.getElementById('flatAndSorted').checked,
 		formatHeader: read('formatHeader'),
 		formatUrl: read('formatUrl'),
 		formatFolder: read('formatFolder')
@@ -58,7 +59,7 @@ function convert(text, config) {
 		res += name + '\n';
 
 		const firstIndent = config.indentAfterHeader ? config.indent : '';
-		const parsed = parse(root, []);
+		const parsed = parse(root, [], config);
 		res += format(parsed, firstIndent, config).join('\n');
 	}
 
@@ -66,7 +67,7 @@ function convert(text, config) {
 }
 
 
-function parse(parent, parentNames) {
+function parse(parent, parentNames, config) {
 	const res = [];
 
 	for (const child of parent.children) {
@@ -81,14 +82,18 @@ function parse(parent, parentNames) {
 			parentNames2.push(child.name);
 			const parentNamesS = parentNames2.join(' > ');
 
-			const children = parse(child, parentNames2);
+			const children = parse(child, parentNames2, config);
 
-			res.push({
-				type: TYPE_FOLDER,
-				name: child.name,
-				path: parentNamesS,
-				children: children
-			});
+			if (config.flatAndSorted) {
+				res.push(...children);
+			} else {
+				res.push({
+					type: TYPE_FOLDER,
+					name: child.name,
+					path: parentNamesS,
+					children: children
+				});
+			}
 		} else {
 			console.log('Invalid node:', child);
 		}
@@ -119,12 +124,15 @@ function format(arr, indent, config) {
 					.replace('PATH', SEP + 'PATH' + SEP)
 					.replace(SEP + 'NAME' + SEP, item.name)
 					.replace(SEP + 'PATH' + SEP, item.path);
-				res.push(indent + formattedFolder);
+					res.push(indent + formattedFolder);
 
 				res.push(...format(item.children, indent + config.indent, config));
 				break;
 		}
 	}
+
+	if (config.flatAndSorted)
+		res.sort();
 
 	return res;
 }
